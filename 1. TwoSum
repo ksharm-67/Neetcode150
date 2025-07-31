@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> freq;
+
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+
+            auto itr = freq.find(complement);
+            if (itr != freq.end()) {
+                return {itr->second, i};  // complement was seen earlier
+            }
+
+            freq[nums[i]] = i;  // insert current number after checking
+        }
+
+        return {};
+    }
+};
