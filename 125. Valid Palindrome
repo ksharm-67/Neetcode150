@@ -1,22 +1,23 @@
-class Solution {
-public:
-    bool isPalindrome(string s) {
-        int i = 0;
-        int j = s.size() - 1;
-
-        if(s.empty()) return true;
-
-        while(i < j){
-            if(isalpha(s[i]) || isdigit(s[i])){    
-                if(tolower(s[i]) != tolower(s[j])){
-                    //cout << s[i] << " " << s[j];
-                    return false;
-                }
-            i++;
-            j--;
-            }
-        }
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
         
-        return true;
-    }
-};
+        if not s:
+            return True
+
+        a = 0
+        b = len(s) - 1
+
+        while(a < b):
+            if s[a].isalnum() and s[b].isalnum():
+                if s[a].lower() != s[b].lower():
+                    return False
+                a += 1
+                b -= 1
+
+            elif not s[a].isalnum():
+                a += 1
+            else:
+                b -= 1
+
+        return True
+
