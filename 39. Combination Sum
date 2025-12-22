@@ -1,0 +1,22 @@
+class Solution:
+    def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
+        
+        def backtrack(nums, i, curr):
+            if sum(curr) == target:
+                temp = curr[:]
+                res.append(temp)
+                return
+            
+            if i >= len(nums):
+                return                
+
+            if sum(curr) + nums[i] <= target:
+                curr.append(nums[i])
+                backtrack(nums, i, curr)
+                curr.pop()
+            
+            backtrack(nums, i + 1, curr)
+        
+        res = []
+        backtrack(nums, 0, [])
+        return res
